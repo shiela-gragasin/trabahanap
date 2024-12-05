@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Application or Posting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #444;
+        }
+
+        #userTypeSelection {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #jobForms {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        #jobApplicationForm, #jobPostingForm {
+            display: none;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea, button[type="submit"] {
+            font-size: 14px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            button {
+                width: 90%;
+            }
+
+            #jobForms {
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Apply or Post a Job</h1>
+    <div id="userTypeSelection">
+        <h3>Select User Type</h3>
+        <button onclick="showForm('seeker')">I am a Job Seeker</button>
+        <button onclick="showForm('client')">I am a Client</button>
+    </div>
+    <div id="jobForms">
+        <div id="jobApplicationForm">
+            <h3>Job Application Form</h3>
+            <form method="POST" action="submit_application.php">
+                <input type="text" name="name" placeholder="Full Name" required><br>
+                <input type="email" name="email" placeholder="Email Address" required><br>
+                <textarea name="resume" placeholder="Paste Your Resume" required></textarea><br>
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+        <div id="jobPostingForm">
+            <h3>Job Posting Form</h3>
+            <form method="POST" action="submit_posting.php">
+                <input type="text" name="title" placeholder="Job Title" required><br>
+                <textarea name="description" placeholder="Job Description" required></textarea><br>
+                <input type="text" name="location" placeholder="Location" required><br>
+                <button type="submit">Post Job</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function showForm(userType) {
+            document.getElementById('userTypeSelection').style.display = 'none';
+            document.getElementById('jobForms').style.display = 'block';
+            if (userType === 'seeker') {
+                document.getElementById('jobApplicationForm').style.display = 'block';
+            } else if (userType === 'client') {
+                document.getElementById('jobPostingForm').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
